@@ -127,3 +127,62 @@ ipconfig
 
 - You can use LAN or Wi-Fi.  
 - You can create multiple SFTP users with separate subfolders.
+
+
+
+Option 1: Use Windows Built-in VPN (L2TP/IPsec)
+Step 1: Enable VPN Server on Windows
+
+Open Control Panel → Network and Sharing Center → Change adapter settings.
+
+Press Alt → select File → New Incoming Connection.
+
+Select the user account for VPN access (e.g., nasuser) → Next.
+
+Check Through the Internet → Next.
+
+Select Internet Protocol Version 4 (TCP/IPv4) → Properties.
+
+Assign IP range for VPN clients (e.g., 192.168.50.10 – 192.168.50.20).
+
+Finish the wizard.
+
+Step 2: Configure Router for VPN
+
+Login to your router.
+
+Forward the VPN ports to your PC:
+
+L2TP/IPsec: UDP 500, UDP 1701, UDP 4500
+
+Ensure your router supports VPN passthrough.
+
+Step 3: Connect from iPhone
+
+Open Settings → VPN → Add VPN Configuration.
+
+Select Type: L2TP.
+
+Fill in details:
+
+Field	Value
+Description	My Home VPN
+Server	Your public IP or DDNS name
+Account	nasuser
+Password	VPN password
+Secret	Same as “IPSec pre-shared key”
+Send All Traffic	ON
+
+Tap Done, then Connect.
+
+Once connected, your iPhone is virtually on your home network → you can use FTPManager / PhotoSync with your local IP or hostname to access NAS.
+
+Option 2: Use a Third-Party VPN (Easier)
+
+Install WireGuard or OpenVPN on your PC or router.
+
+Configure a VPN profile for your iPhone.
+
+Once connected, your iPhone can access NAS securely over the internet.
+
+✅ Advantages: Much safer than port forwarding; encrypted traffic; works on mobile networks.
